@@ -23,8 +23,12 @@ AuthorSchema
 AuthorSchema
 .virtual('lifespan')
 .get(function() {
+  console.log('Unformatted: ' + this.date_of_birth);
+  console.log(this.date_of_death);
   let date_of_birth_formatted = this.date_of_birth ? DateTime.fromJSDate(this.date_of_birth).toLocaleString(DateTime.DATE_MED) : '';
   let date_of_death_formatted = this.date_of_death ? DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED) : '';
+  console.log(date_of_birth_formatted);
+  console.log(date_of_death_formatted);
   return date_of_birth_formatted + ' - ' + date_of_death_formatted;
 });
 
@@ -42,6 +46,18 @@ AuthorSchema
   return this.date_of_death ? DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED) : '';
 });
 
+AuthorSchema
+.virtual('date_of_birth_input_formatted')
+.get(function() {
+  return DateTime.fromJSDate(this.date_of_birth).toISODate();
+});
+
+
+AuthorSchema
+.virtual('date_of_death_input_formatted')
+.get(function() {
+  return DateTime.fromJSDate(this.date_of_death).toISODate();
+});
 
 // Virtual for author's URL
 AuthorSchema
