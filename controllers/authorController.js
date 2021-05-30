@@ -173,8 +173,8 @@ exports.author_update_post = [
         }
         else {
             // Data from form is valid.
-            console.log(req.body.date_of_birth);
-            console.log(req.body.date_of_death);
+            //console.log(req.body.date_of_birth);
+            //console.log(req.body.date_of_death);
             // Create an Author object with escaped and trimmed data.
             var author = new Author(
                 {
